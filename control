@@ -1,0 +1,9 @@
+Package: com.sticktron.sob
+Name: SlackOpenBinaries
+Version: 1.0.0
+Description: 
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 5.0)
+Architecture: iphoneos-arm
+Author: Sticktron
+Homepage: http://sticktron.com
