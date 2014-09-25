@@ -15,34 +15,30 @@
 - (id)filetype;
 @end
 
+
 %group main
 
 %hook File
-
 - (BOOL)isDoc {
 	BOOL result = %orig;
-	//NSLog(@"************ Slack: File::isDoc = %@ *********", result?@"yes":@"no");
-	
 	if (!result) {
 		NSString *filetype = [self filetype];
-		//NSLog(@"************ Slack: File::filetype = %@ *********", filetype);
+		//NSLog(@"*** Slack says filetype is: %@", filetype);
 		
 		if ([filetype isEqualToString:@"binary"]) {
-			result = YES; // trick Slack into treating Binaries as Docs ;)
+			result = YES; // treat binaries as "Docs" ;)
 		}
 	}
 	return result;
 }
-
 %end
-
-
 
 %end
 
 
 %ctor {
 	@autoreleasepool {
+		NSLog(@" SlackOpenBinaries loaded.");
 		%init(main);
 	}
 }
